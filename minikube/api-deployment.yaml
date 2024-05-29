@@ -24,9 +24,6 @@ spec:
             limits:
               memory: "128Mi"
               cpu: "500m"
-          env:
-            - name: API_PORT
-              valueFrom:
-                configMapKeyRef:
-                  name: synergychat-api-configmap
-                  key: API_PORT
+          envFrom:
+            - configMapRef:
+                name: synergychat-api-configmap

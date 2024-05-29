@@ -7,6 +7,11 @@ Staring with bootdev k8s course
 - Deployments
 - Services
 
+### Useful commands
+
+`kubectl cluster-info`
+`kubectl get nodes`
+
 
 #### Start up minikube
 ```bash
@@ -54,4 +59,10 @@ kubectl get svc web-service -o yaml
 
 `ClusterIP` is the default service. There are other types of services like `NodePort` and `LoadBalancer`, etc.
 
-
+### Ingress
+```bash
+# Apply the ingress file, update the /etc/hosts file to point to the minikube ip
+kubectl apply -f app-ingress.yaml
+# Use the minikube tunnel to expose the service
+minikube tunnel -c
+```
