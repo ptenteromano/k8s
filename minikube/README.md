@@ -6,6 +6,9 @@ Staring with bootdev k8s course
 - Configmaps
 - Deployments
 - Services
+- Ingress
+- Storage
+- Namespaces
 
 ### Useful commands
 
@@ -65,4 +68,21 @@ kubectl get svc web-service -o yaml
 kubectl apply -f app-ingress.yaml
 # Use the minikube tunnel to expose the service
 minikube tunnel -c
+```
+
+### Persistent Volumes
+```bash
+kubectl apply -f api-pvc.yaml
+kubectl get pvc
+kubectl get pv
+```
+
+### Namespaces
+```bash
+kubectl get namespaces # or kubectl get ns
+
+kubectl create ns crawler
+kubectl -n crawler get pods
+kubectl -n crawler get svc
+kubectl -n crawler get configmaps
 ```
