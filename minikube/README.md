@@ -28,6 +28,7 @@ kubectl create deployment synergychat-web --image=bootdotdev/synergychat-web:lat
 kubectl get deployments
 kubectl get pods
 kubectl port-forward $PODNAME 8080:8080
+kubectl describe pod <pod-name>
 ```
 
 #### Edit a deployment image
@@ -64,6 +65,7 @@ kubectl get svc web-service -o yaml
 
 ### Ingress
 ```bash
+minikube addons enable ingress
 # Apply the ingress file, update the /etc/hosts file to point to the minikube ip
 kubectl apply -f app-ingress.yaml
 # Use the minikube tunnel to expose the service
@@ -85,4 +87,20 @@ kubectl create ns crawler
 kubectl -n crawler get pods
 kubectl -n crawler get svc
 kubectl -n crawler get configmaps
+```
+
+### Internal DNS
+[DNS Entries](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/) are created for services and pods. The format is `<service-name>.<namespace>.svc.cluster.local`.
+
+After updating the configmap, you may need to delete the pod and allow k8s to recreate it.
+
+### Scaling
+[Horizontal Pod Autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)
+
+```bash
+minikube addons enable metrics-server
+kubectl -n kube-system get pod
+kubectl top pods
+kubectl get hpa
+
 ```
