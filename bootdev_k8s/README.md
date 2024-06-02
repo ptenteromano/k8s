@@ -104,5 +104,10 @@ minikube addons enable metrics-server
 kubectl -n kube-system get pod
 kubectl top pods
 kubectl get hpa
-
 ```
+
+Generally speaking,
+- Set memory requests ~10% higher than the average memory usage of your pods
+- Set CPU requests to 50% of the average CPU usage of your pods
+- Set memory limits ~100% higher than the average memory usage of your pods
+- Set CPU limits ~100% higher than the average CPU usage of your pods
