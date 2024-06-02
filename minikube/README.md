@@ -1,5 +1,7 @@
 ## K8s with Minikube
 
+![alt text](../k8s_infra.png)
+
 Staring with bootdev k8s course
 
 - Images
