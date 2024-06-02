@@ -1,0 +1,13 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: testcpu-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: synergychat-testcpu
+  minReplicas: 1
+  maxReplicas: 1
+  # Targets an average CPU utilization of 50% across all pods
+  targetCPUUtilizationPercentage: 50
